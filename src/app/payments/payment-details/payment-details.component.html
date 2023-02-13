@@ -10,7 +10,6 @@
         <label class="col-form-label" for="createdDate">Created Date:</label>
       </div>
       <div class="col-auto">
-        <!--    <input type="text" id="createdDate" class="form-control" value="{{payment.createdDate | date: 'dd-MM-YYYY HH:mm:ss'}}">-->
         <span id="createdDate">{{payment.createdDate | date: 'dd-MM-YYYY HH:mm:ss'}}</span>
       </div>
     </div>
@@ -19,7 +18,6 @@
         <label for="payerEmail" class="col-form-label">Payer e-mail:</label>
       </div>
       <div class="col-auto">
-        <!--    <input type="text" id="createdDate" class="form-control" value="{{payment.createdDate | date: 'dd-MM-YYYY HH:mm:ss'}}">-->
         <span id="payerEmail">{{payment.payerEmail}}</span>
       </div>
     </div>
@@ -28,7 +26,6 @@
         <label for="amount" class="col-form-label">Amount:</label>
       </div>
       <div class="col-auto">
-        <!--    <input type="text" id="createdDate" class="form-control" value="{{payment.createdDate | date: 'dd-MM-YYYY HH:mm:ss'}}">-->
         <span id="amount">{{payment.amount}}</span>
       </div>
     </div>
@@ -37,7 +34,6 @@
         <label for="currency" class="col-form-label">Currency:</label>
       </div>
       <div class="col-auto">
-        <!--    <input type="text" id="createdDate" class="form-control" value="{{payment.createdDate | date: 'dd-MM-YYYY HH:mm:ss'}}">-->
         <span id="currency">{{payment.currency}}</span>
       </div>
     </div>
@@ -46,7 +42,6 @@
         <label for="status" class="col-form-label">Status:</label>
       </div>
       <div class="col-auto">
-        <!--    <input type="text" id="createdDate" class="form-control" value="{{payment.createdDate | date: 'dd-MM-YYYY HH:mm:ss'}}">-->
         <span id="status">{{payment.status}}</span>
       </div>
     </div>
@@ -55,13 +50,13 @@
         <label for="paidDate" class="col-form-label">Paid Date:</label>
       </div>
       <div class="col-auto">
-        <!--    <input type="text" id="createdDate" class="form-control" value="{{payment.createdDate | date: 'dd-MM-YYYY HH:mm:ss'}}">-->
         <span id="paidDate">{{payment.paidDate | date: 'dd-MM-YYYY HH:mm:ss'}}</span>
       </div>
     </div>
-  </div>
-  <div class="payment-details-footer">
-    <button type="button" id="markAsPaid" class="btn btn-primary" (click)="markAsPaid()" [disabled]="isPaid()">Mark As Paid</button>
-    <button type="button" id="delete" class="btn btn-danger" (click)="deletePayment()" [disabled]="isPaid()">Delete</button>
+
+    <div class="payment-details-footer" *ngIf="!isPaid()">
+      <button type="button" id="markAsPaid" class="btn btn-primary" (click)="markAsPaid()">Mark As Paid</button>
+      <button type="button" id="delete" class="btn btn-danger" (click)="deletePayment()">Delete</button>
+    </div>
   </div>
 </div>

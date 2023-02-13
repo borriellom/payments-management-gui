@@ -20,7 +20,8 @@ export class CreatePaymentComponent implements OnInit {
   @Output()
   paymentCreatedEvent: EventEmitter<Payment> = new EventEmitter<Payment>();
 
-  constructor(private paymentsService: PaymentsService) { }
+  constructor(private paymentsService: PaymentsService) {
+  }
 
   ngOnInit(): void {
   }
