@@ -1,8 +1,7 @@
-import {Component, Input, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Payment} from "../../model/Payment";
 import {PaymentsService} from "../../services/payments.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import {mergeMappings} from "@angular/compiler-cli/src/ngtsc/sourcemaps/src/source_file";
 import {mergeMap, Subject, takeUntil} from "rxjs";
 
 @Component({
@@ -35,7 +34,7 @@ export class PaymentDetailsComponent implements OnInit, OnDestroy {
   }
 
   markAsPaid(): void {
-    if(confirm('Are you sure you want to mark this payment as paid?')) {
+    if (confirm('Are you sure you want to mark this payment as paid?')) {
       this.paymentsService.markAsPaid(this.payment.id)
         .subscribe((updatedPayment: Payment) => {
           this.payment.paidDate = updatedPayment.paidDate;
@@ -45,10 +44,10 @@ export class PaymentDetailsComponent implements OnInit, OnDestroy {
   }
 
   deletePayment(): void {
-    if(confirm('Are you sure you want to delete this payment?')) {
+    if (confirm('Are you sure you want to delete this payment?')) {
       this.paymentsService.delete(this.payment.id)
         .subscribe(() => {
-         this.backToPayments();
+          this.backToPayments();
         });
     }
   }
