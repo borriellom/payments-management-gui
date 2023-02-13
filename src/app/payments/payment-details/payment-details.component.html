@@ -1,0 +1,67 @@
+<div class="back-container">
+  <button type="button" class="btn btn-outline-dark" (click)="backToPayments()">Back to Payments</button>
+</div>
+<div class="payment-details-container">
+
+  <p class="h1">Payment Details</p>
+  <div *ngIf="payment">
+    <div class="row g-3 align-items-center">
+      <div class="col-auto">
+        <label class="col-form-label" for="createdDate">Created Date:</label>
+      </div>
+      <div class="col-auto">
+        <!--    <input type="text" id="createdDate" class="form-control" value="{{payment.createdDate | date: 'dd-MM-YYYY HH:mm:ss'}}">-->
+        <span id="createdDate">{{payment.createdDate | date: 'dd-MM-YYYY HH:mm:ss'}}</span>
+      </div>
+    </div>
+    <div class="row g-3 align-items-center">
+      <div class="col-auto">
+        <label for="payerEmail" class="col-form-label">Payer e-mail:</label>
+      </div>
+      <div class="col-auto">
+        <!--    <input type="text" id="createdDate" class="form-control" value="{{payment.createdDate | date: 'dd-MM-YYYY HH:mm:ss'}}">-->
+        <span id="payerEmail">{{payment.payerEmail}}</span>
+      </div>
+    </div>
+    <div class="row g-3 align-items-center">
+      <div class="col-auto">
+        <label for="amount" class="col-form-label">Amount:</label>
+      </div>
+      <div class="col-auto">
+        <!--    <input type="text" id="createdDate" class="form-control" value="{{payment.createdDate | date: 'dd-MM-YYYY HH:mm:ss'}}">-->
+        <span id="amount">{{payment.amount}}</span>
+      </div>
+    </div>
+    <div class="row g-3 align-items-center">
+      <div class="col-auto">
+        <label for="currency" class="col-form-label">Currency:</label>
+      </div>
+      <div class="col-auto">
+        <!--    <input type="text" id="createdDate" class="form-control" value="{{payment.createdDate | date: 'dd-MM-YYYY HH:mm:ss'}}">-->
+        <span id="currency">{{payment.currency}}</span>
+      </div>
+    </div>
+    <div class="row g-3 align-items-center">
+      <div class="col-auto">
+        <label for="status" class="col-form-label">Status:</label>
+      </div>
+      <div class="col-auto">
+        <!--    <input type="text" id="createdDate" class="form-control" value="{{payment.createdDate | date: 'dd-MM-YYYY HH:mm:ss'}}">-->
+        <span id="status">{{payment.status}}</span>
+      </div>
+    </div>
+    <div *ngIf="isPaid()" class="row g-3 align-items-center">
+      <div class="col-auto">
+        <label for="paidDate" class="col-form-label">Paid Date:</label>
+      </div>
+      <div class="col-auto">
+        <!--    <input type="text" id="createdDate" class="form-control" value="{{payment.createdDate | date: 'dd-MM-YYYY HH:mm:ss'}}">-->
+        <span id="paidDate">{{payment.paidDate | date: 'dd-MM-YYYY HH:mm:ss'}}</span>
+      </div>
+    </div>
+  </div>
+  <div class="payment-details-footer">
+    <button type="button" id="markAsPaid" class="btn btn-primary" (click)="markAsPaid()" [disabled]="isPaid()">Mark As Paid</button>
+    <button type="button" id="delete" class="btn btn-danger" (click)="deletePayment()" [disabled]="isPaid()">Delete</button>
+  </div>
+</div>

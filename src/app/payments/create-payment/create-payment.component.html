@@ -1,0 +1,22 @@
+<form [formGroup]="paymentForm" (ngSubmit)="onSubmit()">
+  <div class="modal-body">
+    <div class="mb-3">
+      <label for="payerEmail" class="form-label">Payer e-mail address </label>
+      <input type="email" class="form-control" id="payerEmail" formControlName="payerEmail">
+    </div>
+    <div class="mb-3">
+      <label for="amount" class="form-label">Amount</label>
+      <input type="text" class="form-control" id="amount" formControlName="amount">
+    </div>
+    <div class="mb-3">
+      <label for="currency" class="form-label">Currency</label>
+      <input type="text" class="form-control" id="currency" formControlName="currency">
+    </div>
+    <!--          <button type="submit" class="btn btn-primary">Submit</button>-->
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="onClose()">Cancel</button>
+    <button type="submit" class="btn btn-primary"  data-bs-dismiss="modal">Submit</button>
+  </div>
+</form>

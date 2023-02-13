@@ -1,0 +1,88 @@
+<div class="payments-container">
+
+  <h1>Payments</h1>
+
+  <button type="button" class="btn btn-outline-dark top" data-bs-toggle="modal" data-bs-target="#createPaymentDialog">Create
+    Payment
+  </button>
+
+  <table *ngIf="payments" class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col">Created Date</th>
+      <th scope="col">Payer Email</th>
+      <th scope="col">Amount</th>
+      <th scope="col">Currency</th>
+      <th scope="col">Payed</th>
+      <th></th>
+<!--      <th></th>-->
+<!--      <th></th>-->
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let payment of payments">
+      <td>{{payment.createdDate | date: 'dd-MM-YYYY hh:mm:ss'}}</td>
+      <td>{{payment.payerEmail}}</td>
+      <td>{{payment.amount}}</td>
+      <td>{{payment.currency}}</td>
+      <td>
+        <i *ngIf="isPaid(payment)" class="fa-solid fa-check"></i>
+        <i *ngIf="!isPaid(payment)" class="fa-solid fa-x"></i>
+      </td>
+      <td>
+        <button (click)="viewPaymentDetails(payment)" title="View Details"><i class="fa-solid fa-eye"></i></button>
+      </td>
+<!--      <td>-->
+<!--        <button (click)="markAsPaid(payment)" title="Mark as paid" ><i class="fa-solid fa-money-bill"></i></button>-->
+<!--      </td>-->
+<!--      <td>-->
+<!--        <button (click)="deletePayment(payment)" title="Delete"><i class="fa-solid fa-trash-can"></i></button>-->
+<!--      </td>-->
+    </tr>
+    </tbody>
+  </table>
+
+  <!--&lt;!&ndash; Button trigger modal &ndash;&gt;-->
+  <!--<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createPaymentDialog">-->
+  <!--  Launch static backdrop modal-->
+  <!--</button>-->
+
+  <!-- Modal -->
+  <div class="modal fade" id="createPaymentDialog" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+       aria-labelledby="createPaymentDialogLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="createPaymentDialogLabel">Create Payment</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <app-create-payment (paymentCreatedEvent)="handleNewPaymentCreated($event)"></app-create-payment>
+<!--        <form [formGroup]="paymentForm" (ngSubmit)="onSubmit()">-->
+
+<!--          <div class="modal-body">-->
+<!--            <div class="mb-3">-->
+<!--              <label for="payerEmail" class="form-label">Payer e-mail address </label>-->
+<!--              <input type="email" class="form-control" id="payerEmail" formControlName="payerEmail">-->
+<!--            </div>-->
+<!--            <div class="mb-3">-->
+<!--              <label for="amount" class="form-label">Amount</label>-->
+<!--              <input type="text" class="form-control" id="amount" formControlName="amount">-->
+<!--            </div>-->
+<!--            <div class="mb-3">-->
+<!--              <label for="currency" class="form-label">Currency</label>-->
+<!--              <input type="text" class="form-control" id="currency" formControlName="currency">-->
+<!--            </div>-->
+<!--            &lt;!&ndash;          <button type="submit" class="btn btn-primary">Submit</button>&ndash;&gt;-->
+<!--          </div>-->
+
+<!--          <div class="modal-footer">-->
+<!--            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>-->
+<!--            <button type="submit" class="btn btn-primary"  data-bs-dismiss="modal">Submit</button>-->
+<!--          </div>-->
+<!--        </form>-->
+
+      </div>
+    </div>
+  </div>
+</div>
